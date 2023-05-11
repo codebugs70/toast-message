@@ -1,0 +1,134 @@
+// sass ./sass/style.scss ./css/style.css --watch
+$primary: #6a5af9;
+$secondary: #d66efd;
+$colorPink: #f62682;
+$colorGreen: #20e3b2;
+$colorOrange: #ff6651;
+$colorGray: #eee;
+$colorBlue: #2cccff;
+$dark: #34495e;
+$colorHover: rgba(0, 0, 0, 0.1);
+$colorHoverWhite: rgba(255, 255, 255, 0.5);
+/* =================================================== */
+body {
+  display: flex;
+  align-items: center;
+  position: relative;
+  justify-content: center;
+}
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+.btn {
+  padding: 15px 20px;
+  text-align: center;
+  border-radius: 6px;
+  font-size: 20px;
+  font-weight: 500;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  background-color: #20e3b2;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+.toast {
+  position: fixed;
+  top: 30px;
+  right: 20px;
+  color: black;
+  animation: SHOW_TOAST 0.5s linear forwards;
+  &.hide {
+    animation: HIDE_TOAST 0.5s linear forwards;
+  }
+  &-content {
+    position: relative;
+    width: 400px;
+    background-color: white;
+    display: flex;
+    border-radius: 6px;
+    overflow: hidden;
+    align-items: center;
+    justify-content: space-between;
+    border-left: 4px solid #20e3b2;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    padding: 20px 30px;
+    &:hover {
+      opacity: 0.8;
+    }
+    &::before {
+      content: "";
+      position: absolute;
+      height: 3px;
+      width: 100%;
+      background-color: #20e3b2;
+      bottom: 0;
+      left: 0;
+      animation: progress 3s linear forwards;
+    }
+    @keyframes progress {
+      100% {
+        width: 0;
+      }
+    }
+    .row {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      i {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 30px;
+        height: 30px;
+        font-size: 15px;
+        border-radius: 100rem;
+        color: white;
+        background-color: $colorGreen;
+      }
+    }
+    span {
+      font-size: 20px;
+      cursor: pointer;
+    }
+    p {
+      user-select: none;
+      font-weight: 500;
+      font-size: 18px;
+    }
+  }
+}
+
+/* keyframe animation */
+@keyframes SHOW_TOAST {
+  0% {
+    transform: translateX(100%);
+  }
+  40% {
+    transform: translateX(-5%);
+  }
+  80% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-10px);
+  }
+}
+
+@keyframes HIDE_TOAST {
+  0% {
+    transform: translateX(-10px);
+  }
+  40% {
+    transform: translateX(0%);
+  }
+  80% {
+    transform: translateX(-5%);
+  }
+  100% {
+    transform: translateX(calc(100% + 30px));
+  }
+}
